@@ -23,7 +23,7 @@ const DebtPaymentInterface: React.FC<DebtPaymentProps> = ({ onLogout, username, 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/transactions/${user?.id}`);
+        const response = await fetch(`http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/transactions/${user?.id}`);
         if (response.ok) {
           const data = await response.json();
           setInitialData(data.balance, data.creditDebt, data.transactions);
@@ -60,7 +60,7 @@ const DebtPaymentInterface: React.FC<DebtPaymentProps> = ({ onLogout, username, 
     // ATM İşlem Simülasyonu (4 saniye)
     setTimeout(async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/pay-debt', {
+        const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/pay-debt', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

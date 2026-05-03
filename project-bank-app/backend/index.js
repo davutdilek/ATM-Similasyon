@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 
@@ -287,7 +288,13 @@ app.post('/api/update-password', async (req, res) => {
   }
 });
 
+// Vite projesinin "dist" klasörünü dışa aktar
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
+// API ile başlamayan tüm istekleri React'ın ana sayfasına yönlendir
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
 
 const PORT = 3000;
 app.listen(PORT, () => {

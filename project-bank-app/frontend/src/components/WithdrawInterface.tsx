@@ -26,7 +26,7 @@ const WithdrawInterface: React.FC<WithdrawInterfaceProps> = ({ onLogout, usernam
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/transactions/${user?.id}`);
+        const response = await fetch(`http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/transactions/${user?.id}`);
         if (response.ok) {
           const data = await response.json();
           setInitialData(data.balance, data.creditDebt, data.transactions);
@@ -58,7 +58,7 @@ const WithdrawInterface: React.FC<WithdrawInterfaceProps> = ({ onLogout, usernam
     // ATM Para Çıkış Simülasyonu (4 saniye)
     setTimeout(async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/transactions', {
+        const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/transactions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

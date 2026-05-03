@@ -80,7 +80,7 @@ const SecurityInterface: React.FC<SecurityInterfaceProps> = ({ onLogout, onSelec
 
     try {
       // Kontrol: Mevcut şifre doğruluğu (Backend)
-      const response = await fetch('http://localhost:3000/api/check-password', {
+      const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/check-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -107,7 +107,7 @@ const SecurityInterface: React.FC<SecurityInterfaceProps> = ({ onLogout, onSelec
   const handleFinalSave = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/api/update-password', {
+      const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/update-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

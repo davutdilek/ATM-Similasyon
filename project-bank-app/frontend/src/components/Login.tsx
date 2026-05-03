@@ -131,7 +131,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     try {
       const rawCardNumber = formData.cardNumber.replace(/\s/g, ''); 
       
-      const response = await fetch('http://localhost:3000/api/login', {
+      const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -179,7 +179,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           const firstName = nameParts[0];
           const lastName = nameParts.slice(1).join(' ') || 'Bilinmiyor';
 
-          const response = await fetch('http://localhost:3000/api/register', {
+          const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -24,7 +24,7 @@ const CashAdvanceInterface: React.FC<CashAdvanceProps> = ({ onLogout, username, 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/transactions/${user?.id}`);
+        const response = await fetch(`http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/transactions/${user?.id}`);
         if (response.ok) {
           const data = await response.json();
           setInitialData(data.balance, data.creditDebt, data.transactions);
@@ -61,7 +61,7 @@ const CashAdvanceInterface: React.FC<CashAdvanceProps> = ({ onLogout, username, 
       try {
         // Backend'de hem bakiye artacak hem de borç artacak özel bir endpoint olduğunu varsayıyoruz
         // Mevcut API yapına göre bakiye artışını DEPOSIT (Nakit Avans) olarak kaydediyoruz
-        const response = await fetch('http://localhost:3000/api/cash-advance', {
+        const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/cash-advance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

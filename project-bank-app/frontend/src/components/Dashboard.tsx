@@ -44,7 +44,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/transactions/${user.id}`);
+      const response = await fetch(`http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/transactions/${user.id}`);
       if (response.ok) {
         const data = await response.json();
         
@@ -108,7 +108,7 @@ const Dashboard: React.FC<DashboardProps> = ({
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/pay-debt', {
+      const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/pay-debt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user.id, amount: amountToPay }),
@@ -180,7 +180,7 @@ const handleTransfer = async () => {
   const parsedAmount = parseFloat(transferAmount);
 
   try {
-    const response = await fetch('http://localhost:3000/api/transfer', {
+    const response = await fetch('http://banka-alb-1679531427.eu-north-1.elb.amazonaws.com/api/transfer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
